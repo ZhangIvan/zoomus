@@ -70,3 +70,12 @@ class MeetingComponentV2(base.BaseComponent):
         return self.delete_request(
             "/meetings/{}".format(kwargs.get("id")), params=kwargs
         )
+
+    def patch_live(self, **kwargs):
+        """
+        patch meet live stream config
+        :param kwargs:
+        :return:
+        """
+        util.require_keys(kwargs, "id")
+        return self.patch_request("/meetings/{}/livestream".format(kwargs.get("id")), data=kwargs)
